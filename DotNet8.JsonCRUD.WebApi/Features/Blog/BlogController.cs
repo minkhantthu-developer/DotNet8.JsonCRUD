@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DotNet8.JsonCRUD.WebApi.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNet8.JsonCRUD.WebApi.Features.Blog
@@ -19,6 +20,13 @@ namespace DotNet8.JsonCRUD.WebApi.Features.Blog
         {
             var model = await _bl_blog.GetBlogAsync();
             return Content(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PostBlog(BlogRequestModel requestModel)
+        {
+            var response=await _bl_blog.CreateBlogAsync(requestModel);
+            return Content(response);
         }
     }
 }

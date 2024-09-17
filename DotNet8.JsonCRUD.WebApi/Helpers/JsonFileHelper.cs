@@ -19,19 +19,16 @@
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString()); 
+                throw new Exception(ex.ToString());
             }
         }
 
-        public async Task WriteJson<T>(T model)
+        public async Task WriteJson<T>(List<T> lst)
         {
             try
             {
-                var lst =await GetJsonStringAsync<T>();
-                lst.Add(model);
-
-                string jsonStr = JsonConvert.SerializeObject(lst, Formatting.Indented);
-                await File.WriteAllTextAsync(_filePath,jsonStr);
+                string jsonStr = lst.ToJson();
+                await File.WriteAllTextAsync(_filePath, jsonStr);
             }
             catch (Exception ex)
             {
@@ -39,7 +36,7 @@
             }
         }
 
-        private async Task<string> ReadFile() => 
+        private async Task<string> ReadFile() =>
             await File.ReadAllTextAsync(_filePath);
     }
 }

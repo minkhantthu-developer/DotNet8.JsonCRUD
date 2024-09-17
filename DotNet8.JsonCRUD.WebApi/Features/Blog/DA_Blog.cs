@@ -28,4 +28,22 @@ public class DA_Blog
         return response;
     }
 
+    public async Task<Result<BlogResponseModel>> CreateBlogAsync(BlogRequestModel requestModel)
+    {
+        Result<BlogResponseModel> response;
+        try
+        {
+            var blog = requestModel.ToModel();
+            var lst = await _jsonFile.GetJsonStringAsync<BlogModel>();
+            lst.Add(blog);
+            await _jsonFile.WriteJson(lst);
+            response = Result<BlogResponseModel>.Success();
+        }
+        catch(Exception ex)
+        {
+            response = Result<BlogResponseModel>.Failure(ex);
+        }
+        return response;
+    }
+
 }
