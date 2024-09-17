@@ -9,5 +9,5 @@ public class BlogModel
     public string? BlogAuthor { get; set; }
 
     public string? BlogContent { get; set; }
-    
+
 }

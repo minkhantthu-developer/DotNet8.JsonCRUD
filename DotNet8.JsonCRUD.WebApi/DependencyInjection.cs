@@ -1,7 +1,4 @@
-﻿using DotNet8.JsonCRUD.WebApi.Features.Blog;
-using DotNet8.JsonCRUD.WebApi.Helpers;
-
-namespace DotNet8.JsonCRUD.WebApi
+﻿namespace DotNet8.JsonCRUD.WebApi
 {
     public static class DependencyInjection
     {

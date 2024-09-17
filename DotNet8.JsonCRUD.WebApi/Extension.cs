@@ -1,6 +1,4 @@
-﻿using DotNet8.JsonCRUD.WebApi.Models;
-
-namespace DotNet8.JsonCRUD.WebApi
+﻿namespace DotNet8.JsonCRUD.WebApi
 {
     public static class Extension
     {

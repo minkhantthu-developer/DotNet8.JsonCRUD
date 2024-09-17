@@ -13,12 +13,12 @@ namespace DotNet8.JsonCRUD.WebApi.Models
 
         public static Result<T> Success(
             T data,
-            EnumStatusCode statusCode=EnumStatusCode.Success,
-            string message="Success"
-            )=> 
+            EnumStatusCode statusCode = EnumStatusCode.Success,
+            string message = "Success"
+            ) =>
             new Result<T>
             {
-                IsSuccess=true,
+                IsSuccess = true,
                 StatusCode = statusCode,
                 message = message,
                 Data = data
@@ -26,18 +26,18 @@ namespace DotNet8.JsonCRUD.WebApi.Models
 
         public static Result<T> Success(
             string message = "Success",
-            EnumStatusCode statusCode= EnumStatusCode.Success
+            EnumStatusCode statusCode = EnumStatusCode.Success
             ) =>
             new Result<T>
             {
-                IsSuccess=true,
+                IsSuccess = true,
                 StatusCode = statusCode,
                 message = message,
             };
 
         public static Result<T> Failure(
             string message = "Fail.",
-            EnumStatusCode statusCode=EnumStatusCode.BadRequest
+            EnumStatusCode statusCode = EnumStatusCode.BadRequest
             ) =>
             new Result<T>
             {
@@ -60,13 +60,13 @@ namespace DotNet8.JsonCRUD.WebApi.Models
         public static Result<T> ExecuteResult(int result) =>
             result > 0 ? Result<T>.Success(MessageResource.Success) : Result<T>.Failure(MessageResource.Invalid);
 
-        public static Result<T> SaveSuccess()=>
+        public static Result<T> SaveSuccess() =>
             Result<T>.Success(MessageResource.SavingSuccess);
 
         public static Result<T> SaveFail() =>
             Result<T>.Success(MessageResource.SavingFail);
 
-        public static Result<T> UpdateSuccess()=>
+        public static Result<T> UpdateSuccess() =>
             Result<T>.Success(MessageResource.UpdateSuccessful);
 
         public static Result<T> UpdateFail() =>
@@ -82,6 +82,6 @@ namespace DotNet8.JsonCRUD.WebApi.Models
             Result<T>.Failure(MessageResource.Duplicate);
 
         public static Result<T> NotFound() =>
-            Result<T>.Failure(MessageResource.NotFound,EnumStatusCode.NotFound);
+            Result<T>.Failure(MessageResource.NotFound, EnumStatusCode.NotFound);
     }
 }

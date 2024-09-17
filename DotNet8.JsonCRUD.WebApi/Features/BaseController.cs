@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace DotNet8.JsonCRUD.WebApi.Features
+﻿namespace DotNet8.JsonCRUD.WebApi.Features
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -9,7 +6,7 @@ namespace DotNet8.JsonCRUD.WebApi.Features
     {
         protected IActionResult Content(object obj)
         {
-            return Content(obj.ToJson(),"application/json");
+            return Content(obj.ToJson(), "application/json");
         }
 
         protected IActionResult InternalServerError(Exception ex)
