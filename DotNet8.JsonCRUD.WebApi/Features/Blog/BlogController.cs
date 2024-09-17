@@ -22,6 +22,13 @@ namespace DotNet8.JsonCRUD.WebApi.Features.Blog
             return Content(model);
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBlogById(string id)
+        {
+            var response = await _bl_blog.GetBlogByIdAsync(id);
+            return Content(response);
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostBlog(BlogRequestModel requestModel)
         {

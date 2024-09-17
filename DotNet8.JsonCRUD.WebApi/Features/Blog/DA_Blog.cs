@@ -46,4 +46,28 @@ public class DA_Blog
         return response;
     }
 
+    public async Task<Result<BlogResponseModel>> GetBlogByIdAsync(string BlogId)
+    {
+        Result<BlogResponseModel> response;
+        try
+        {
+            var lstBlog = await _jsonFile.GetJsonStringAsync<BlogModel>();
+            var blog = lstBlog.FirstOrDefault(x => x.BlogId == BlogId);
+            if(blog is null)
+            {
+                response = Result<BlogResponseModel>.NotFound();
+                goto result;
+            }
+            var blogResponse = new BlogResponseModel(blog);
+            response = Result<BlogResponseModel>.Success(blogResponse);
+        }
+        catch(Exception ex)
+        {
+            response = Result<BlogResponseModel>.Failure(ex);
+        }
+    result:
+        return response;
+    }
+
+
 }

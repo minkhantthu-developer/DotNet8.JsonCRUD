@@ -29,5 +29,18 @@ namespace DotNet8.JsonCRUD.WebApi.Features.Blog
         result:
             return response;
         }
+
+        public async Task<Result<BlogResponseModel>> GetBlogByIdAsync(string BlogId)
+        {
+            Result<BlogResponseModel> response;
+            if (BlogId.IsNullOrEmpty())
+            {
+                response = Result<BlogResponseModel>.Failure();
+                goto result;
+            }
+            response= await _da_blog.GetBlogByIdAsync(BlogId);
+            result:
+            return response;
+        }
     }
 }
