@@ -9,7 +9,7 @@ namespace DotNet8.JsonCRUD.WebApi
         {
             return services.AddScoped<JsonFileHelper>()
                            .AddScoped<DA_Blog>()
-                           .AddScoped<BL_Blog>();
+                           .AddScoped<BL_BLog>();
         }
     }
 }

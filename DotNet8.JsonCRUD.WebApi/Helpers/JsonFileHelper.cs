@@ -9,7 +9,7 @@
             _filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data/Blog.json");
         }
 
-        private async Task<List<T>> GetJsonString<T>()
+        public async Task<List<T>> GetJsonStringAsync<T>()
         {
             try
             {
@@ -27,7 +27,7 @@
         {
             try
             {
-                var lst =await GetJsonString<T>();
+                var lst =await GetJsonStringAsync<T>();
                 lst.Add(model);
 
                 string jsonStr = JsonConvert.SerializeObject(lst, Formatting.Indented);
