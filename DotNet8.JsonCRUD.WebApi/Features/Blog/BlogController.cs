@@ -1,6 +1,6 @@
 ﻿namespace DotNet8.JsonCRUD.WebApi.Features.Blog;
 
-[Route("api/[controller]")]
+[Route("api/blog")]
 [ApiController]
 public class BlogController : BaseController
 {
@@ -16,6 +16,14 @@ public class BlogController : BaseController
     {
         var model = await _bl_blog.GetBlogAsync();
         return Content(model);
+    }
+
+    [HttpGet("City")]
+    public async Task<IActionResult> GetCities()
+    {
+        var jsonStr = System.IO.File.ReadAllText("Data/City.json");
+        var lst=jsonStr.ToObject<CityModel>();
+        return Content(lst);
     }
 
     [HttpGet("{id}")]
